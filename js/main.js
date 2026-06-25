@@ -152,6 +152,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // botão voltar ao topo
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.pageYOffset > 400);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // bloqueia zoom duplo-toque no mobile (permite pinch-to-zoom com 2 dedos)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(e) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            e.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
     // glow que acompanha o cursor pelo site
     const cursor = document.createElement('div');
     cursor.className = 'cursor-glow';
