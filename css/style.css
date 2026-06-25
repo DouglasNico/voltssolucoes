@@ -464,6 +464,10 @@ a {
     height: 100%;
 }
 
+.hero__shape--mobile {
+    display: none;
+}
+
 /* ========================
    Marquee (barra de texto rolando)
    ======================== */
@@ -1307,6 +1311,13 @@ a {
         display: none;
     }
 
+    .hero__shape--mobile {
+        display: block;
+        margin: 0 auto 24px auto;
+        width: 240px;
+        height: 240px;
+    }
+
     .sobre__layout {
         grid-template-columns: 1fr;
     }
@@ -1369,6 +1380,11 @@ a {
 
     .hero__title {
         font-size: clamp(1.6rem, 7vw, 2.5rem);
+    }
+
+    .hero__shape--mobile {
+        width: 180px;
+        height: 180px;
     }
 
     .hero__desc {
