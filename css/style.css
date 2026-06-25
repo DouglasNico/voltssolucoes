@@ -915,11 +915,11 @@ a {
 }
 
 .footer__brand .logo__icon {
-    transition: filter 0.3s var(--ease);
+    transition: transform 0.3s var(--ease);
 }
 
 .footer__brand:hover .logo__icon {
-    filter: brightness(0.7);
+    transform: scale(1.1);
 }
 
 .footer__links {
@@ -988,17 +988,11 @@ a {
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     z-index: 99;
     transition: all 0.3s var(--ease);
-    animation: waPulse 2s infinite;
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
-}
-
-@keyframes waPulse {
-    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
-    50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6); }
+    transform: scale(1.12);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
 }
 
 /* ========================

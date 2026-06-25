@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // botão voltar ao topo
+    // botão voltar ao topo - aparece ao rolar
     const backToTop = document.getElementById('backToTop');
     if (backToTop) {
         window.addEventListener('scroll', () => {
@@ -173,19 +173,4 @@ document.addEventListener('DOMContentLoaded', () => {
         lastTouchEnd = now;
     }, false);
 
-    // glow que acompanha o cursor pelo site
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-glow';
-    cursor.style.cssText = 'position:fixed;width:300px;height:300px;background:radial-gradient(circle,var(--primary-glow) 0%,transparent 70%);border-radius:50%;pointer-events:none;z-index:0;opacity:0;transition:opacity 0.3s;transform:translate(-50%,-50%)';
-    document.body.appendChild(cursor);
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        cursor.style.opacity = '1';
-    });
-
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
-    });
 });
