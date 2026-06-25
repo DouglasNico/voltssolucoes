@@ -918,7 +918,7 @@ a {
     transition: transform 0.5s var(--ease);
 }
 
-.footer__brand:hover .logo__icon {
+.footer__brand .logo:hover .logo__icon {
     transform: scale(1.1);
 }
 
