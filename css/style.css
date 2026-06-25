@@ -36,7 +36,23 @@ html {
 
 body {
     font-family: 'Outfit', sans-serif;
-    background: var(--bg);
+    background-color: var(--bg);
+    
+    /* OPÇÃO 1: Pontilhismo (Dot Grid) - Comentado para testar o próximo
+    background-image: 
+        radial-gradient(ellipse at center, rgba(9, 9, 11, 1) 0%, rgba(9, 9, 11, 0.8) 50%, transparent 100%),
+        radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 100% 100%, 24px 24px;
+    */
+
+    /* OPÇÃO 2: Malha Quadriculada (Grid Lines - Estilo Engenharia/Vercel) */
+    background-image: 
+        radial-gradient(ellipse at center, rgba(9, 9, 11, 1) 0%, rgba(9, 9, 11, 0.8) 60%, transparent 100%),
+        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+
+    background-attachment: fixed;
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
@@ -188,17 +204,15 @@ a {
     right: 0;
     z-index: 100;
     padding: 20px 0;
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-    transition: background 0.4s var(--ease), padding 0.4s var(--ease);
-}
-
-/* sombra e blur quando rola a página */
-.header.scrolled {
-    background: rgba(9, 9, 11, 0.70);
+    background: rgba(9, 9, 11, 0.60); /* Fundo 60% opaco */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--surface);
+    transition: padding 0.4s var(--ease);
+}
+
+/* diminui o padding quando rola a página, mas a cor já é fixa */
+.header.scrolled {
     padding: 14px 0;
 }
 
@@ -992,11 +1006,26 @@ a {
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     z-index: 99;
     transition: all 0.3s var(--ease);
+    animation: pulse-whatsapp 2s infinite;
+}
+
+@keyframes pulse-whatsapp {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.12);
-    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+    background: #128c7e; /* Verde um pouco mais escuro do próprio WhatsApp */
 }
 
 /* ========================
