@@ -915,7 +915,7 @@ a {
 }
 
 .footer__brand .logo__icon {
-    transition: transform 0.3s var(--ease);
+    transition: transform 0.5s var(--ease);
 }
 
 .footer__brand:hover .logo__icon {
