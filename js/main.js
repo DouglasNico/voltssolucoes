@@ -41,20 +41,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Colete os alvos (headers) que possuem os IDs dos links
+    const scrollTargets = Array.from(navLinks)
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
     // deixa o link da nav destacado conforme a seção visível
     window.addEventListener('scroll', () => {
-        const scrollY = window.pageYOffset + 100;
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + sectionId) {
-                        link.classList.add('active');
-                    }
-                });
+        let currentId = '';
+        
+        scrollTargets.forEach(target => {
+            const targetTop = target.getBoundingClientRect().top;
+            // Se o topo do título estiver próximo ao topo da tela
+            if (targetTop < 250) {
+                currentId = target.getAttribute('id');
+            }
+        });
+
+        // Se chegou no final da página, ativa o último link (Contato)
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            currentId = scrollTargets[scrollTargets.length - 1].getAttribute('id');
+        }
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+                link.classList.add('active');
             }
         });
     });
@@ -172,5 +184,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         lastTouchEnd = now;
     }, false);
+
+    // ========================
+    // Modal de Serviços
+    // ========================
+    const serviceLinks = document.querySelectorAll('.service__link');
+    const modal = document.getElementById('serviceModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+    
+    if (modal) {
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalBtn = document.getElementById('modalBtn');
+
+        const serviceImages = [
+            'img/servicos/adequacao.jpg', // Adequacao
+            'img/servicos/paineis.jpg', // Paineis
+            'img/servicos/residencial.jpg', // Residencial
+            'img/servicos/spda.jpg', // SPDA
+            'img/servicos/comercial.jpg', // Comercial
+            'img/servicos/cftv.jpg', // CFTV
+            'img/servicos/ar.jpg'  // Ar
+        ];
+
+        serviceLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Get parent article to extract data
+                const article = link.closest('.service');
+                const title = article.querySelector('.service__title').innerText;
+                const text = article.querySelector('.service__text').innerText;
+                const originalHref = link.getAttribute('href'); // WhatsApp Link
+
+                // Populate modal
+                modalTitle.innerText = title;
+                modalDesc.innerText = text + ' Nossa equipe está pronta para avaliar sua necessidade e propor a melhor solução técnica. Fale conosco para um orçamento sem compromisso!';
+                modalImg.src = serviceImages[index] || serviceImages[0];
+                modalBtn.href = originalHref;
+
+                // Open modal
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // block background scroll
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        modalClose.addEventListener('click', closeModal);
+        
+        // Fechar ao apertar ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
 
 });
