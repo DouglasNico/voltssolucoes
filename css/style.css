@@ -524,6 +524,7 @@ a {
     width: 100%;
     background: var(--bg);
     border-top: 1px solid var(--surface-2);
+    border-bottom: 1px solid var(--surface-2);
     padding: 16px 0;
     overflow: hidden;
     z-index: 10;
