@@ -518,10 +518,15 @@ a {
    ======================== */
 
 .hero__marquee {
-    border-top: 1px solid var(--surface);
-    border-bottom: 1px solid var(--surface);
-    padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    border-top: 1px solid var(--surface-2);
+    padding: 16px 0;
     overflow: hidden;
+    z-index: 10;
 }
 
 .marquee__track {
