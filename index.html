@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=3">
+
     <link rel="icon" type="image/png" href="img/logo.png">
 </head>
 <body>
@@ -449,9 +450,11 @@
     <div class="modal" id="serviceModal">
         <div class="modal__overlay" id="modalOverlay"></div>
         <div class="modal__content">
-            <button class="modal__close" id="modalClose">&times;</button>
-            <div class="modal__body">
+            <div class="modal__header">
                 <h3 class="modal__title" id="modalTitle">Título do Serviço</h3>
+                <button class="modal__close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal__body">
                 <img src="img/servicos/adequacao.jpg" alt="Serviço" class="modal__img" id="modalImg">
                 <div class="modal__desc-box">
                     <p class="modal__desc" id="modalDesc">Descrição detalhada do serviço.</p>
@@ -468,6 +471,6 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
     </button>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=3"></script>
 </body>
 </html>

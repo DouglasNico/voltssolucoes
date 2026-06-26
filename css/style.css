@@ -1211,7 +1211,8 @@ a {
     width: 90%;
     max-width: 600px;
     max-height: 90vh;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
     border-radius: var(--radius-lg);
     z-index: 1001;
     transform: scale(0.95);
@@ -1224,14 +1225,31 @@ a {
     transform: scale(1);
 }
 
+.modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 64px; /* padding extra nas laterais para não bater no botão X */
+    border-bottom: 1px solid var(--surface-2);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.modal__title {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    text-align: center;
+}
+
 .modal__close {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    right: 24px;
     width: 32px;
     height: 32px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
+    background: var(--surface-2);
+    color: var(--text);
     border: none;
     border-radius: 50%;
     font-size: 1.5rem;
@@ -1239,25 +1257,18 @@ a {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 2;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    flex-shrink: 0;
 }
 
 .modal__close:hover {
     background: var(--primary);
+    color: #fff;
 }
 
 .modal__body {
-    padding: clamp(20px, 4vw, 32px);
-}
-
-.modal__title {
-    font-size: clamp(1.3rem, 5vw, 1.8rem);
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 700;
-    color: var(--text);
-    padding: 0 24px;
+    padding: 16px clamp(20px, 4vw, 32px) 24px;
+    overflow-y: auto;
 }
 
 .modal__img {
@@ -1265,7 +1276,7 @@ a {
     height: 250px;
     object-fit: cover;
     border-radius: var(--radius);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .modal__desc-box {
@@ -1273,7 +1284,7 @@ a {
     padding: 16px 24px;
     border-radius: var(--radius);
     border: 1px solid var(--surface-2);
-    margin-bottom: 32px;
+    margin-bottom: 16px;
 }
 
 .modal__desc {
@@ -1289,6 +1300,8 @@ a {
     font-weight: 600;
     gap: 12px;
 }
+
+
 
 /* ========================
    Animações de entrada
