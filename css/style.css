@@ -1210,8 +1210,9 @@ a {
     background: var(--bg);
     width: 90%;
     max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
     border-radius: var(--radius-lg);
-    overflow: hidden;
     z-index: 1001;
     transform: scale(0.95);
     transition: transform 0.4s var(--ease);
@@ -1247,16 +1248,16 @@ a {
 }
 
 .modal__body {
-    padding: 32px;
+    padding: clamp(20px, 4vw, 32px);
 }
 
 .modal__title {
-    font-size: 2rem;
-    margin-bottom: 24px;
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    margin-bottom: 20px;
     text-align: center;
     font-weight: 700;
     color: var(--text);
-    padding: 0 40px; /* Evita que o texto encoste no X */
+    padding: 0 24px;
 }
 
 .modal__img {
@@ -1557,10 +1558,13 @@ a {
     .hero__grid {
         grid-template-columns: 1fr;
         text-align: center;
-        padding-top: 100px;
+        padding-top: 120px;
+        gap: 40px;
     }
-
-    .hero__desc {
+    
+    .hero__marquee {
+        position: relative;
+    }.hero__desc {
         margin-left: auto;
         margin-right: auto;
     }
